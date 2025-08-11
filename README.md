@@ -1,6 +1,6 @@
 <!-- Hero Image -->
 <p align="center">
-  <img src="src/screenshots/hero.png" alt="Jine Music App Preview" width="250">
+  <img src="src/screenshots/hero.jpeg" alt="Jine Music App Preview" width="250">
 </p>
 
 <h1 align="center">🎵 Jine Music</h1>
@@ -38,22 +38,22 @@ Inspired by [@budiartirohman](https://www.instagram.com/budiartirohman) — blen
 
 ### 🔍 Search Anything
 <p align="center">
-  <img src="src/screenshots/search.png" alt="Search Feature" width="250">
+  <img src="src/screenshots/search.jpeg" alt="Search Feature" width="250">
 </p>
 
 ---
 
 ### 🎼 Sleek Album View
 <p align="center">
-  <img src="src/screenshots/album.png" alt="Album View" width="250">
+  <img src="src/screenshots/album.jpeg" alt="Album View" width="250">
 </p>
 
 ---
 
 ### 📝 Real-Time Lyrics + Genre Sorting
 <p align="center">
-  <img src="src/screenshots/lyrics.png" alt="Lyrics Sync" width="250">
-  <img src="src/screenshots/genre.png" alt="Genre Sorting" width="250">
+  <img src="src/screenshots/lyrics.jpeg" alt="Lyrics Sync" width="250">
+  <img src="src/screenshots/genre.jpeg" alt="Genre Sorting" width="250">
 </p>
 
 ---

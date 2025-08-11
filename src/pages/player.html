@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+   <div class="songs-main-overlay">
+      <div class="songs-main-wrapper">
+         <div class="songs-title-wrapper">
+            <i id="back-to-home-btn" class="ri-arrow-left-line"></i>
+            <h1>Now Playing</h1>
+            <i class="ri-heart-line"></i>
+         </div>
+         <div class="player-image-wrapper">
+            <img src="../images/user_img.jpeg" alt="image" />
+            <h2 id="song-title">Startlit Reverie</h2>
+            <h3 id="song-artist">Budarti x Lil magrib</h3>
+         </div>
+
+         <div id="song-lyrics-wrapper">
+            <div class="lyrics-container">
+               <div class="lyrics-line" data-timestamp="0">
+                  <p>Welcome to the starlit night</p>
+               </div>
+               <div class="lyrics-line" data-timestamp="3000">
+                  <p>Dancing shadows in the moonlight</p>
+               </div>
+               <div class="lyrics-line" data-timestamp="6000">
+                  <p>Dreams unfold like whispered songs</p>
+               </div>
+               <div class="lyrics-line" data-timestamp="9000">
+                  <p>In this moment, we belong</p>
+               </div>
+               <div class="lyrics-line" data-timestamp="12000">
+                  <p>Starlit reverie takes flight</p>
+               </div>
+               <div class="lyrics-line" data-timestamp="15000">
+                  <p>Through the endless, peaceful night</p>
+               </div>
+               <div class="lyrics-line" data-timestamp="18000">
+                  <p>Every heartbeat tells a story</p>
+               </div>
+               <div class="lyrics-line" data-timestamp="21000">
+                  <p>Of love and hope and glory</p>
+               </div>
+               <div class="lyrics-line" data-timestamp="24000">
+                  <p>In this starlit reverie</p>
+               </div>
+               <div class="lyrics-line" data-timestamp="27000">
+                  <p>We find our destiny</p>
+               </div>
+            </div>
+         </div>
+
+         
+         <div class="player-controls-wrapper">
+              <div class="audio-timeline">
+                 <div class="time-display">
+                    <span id="current-time">0:00</span>
+                 </div>
+                 <div class="progress-container">
+                    <div class="progress-bar">
+                       <div class="progress-fill"></div>
+                       <div class="progress-handle"></div>
+                    </div>
+                 </div>
+                 <div class="time-display">
+                    <span id="total-time">3:24</span>
+                 </div>
+              </div>
+
+              <div class="audio-controls">
+                 <button class="control-btn" id="shuffle-btn">
+                    <i class="ri-shuffle-line"></i>
+                 </button>
+                 <button class="control-btn" id="prev-btn">
+                    <i class="ri-skip-back-fill"></i>
+                 </button>
+                 <button class="control-btn play-pause-btn" id="play-pause-btn">
+                    <i class="ri-play-fill"></i>
+                 </button>
+                 <button class="control-btn" id="next-btn">
+                    <i class="ri-skip-forward-fill"></i>
+                 </button>
+                 <button class="control-btn" id="repeat-btn">
+                    <i class="ri-repeat-line"></i>
+                 </button>
+              </div>
+           </div>
+      </div>
+      
+   </div>
+   
+     
+     
+    <script type="module" src="../js/main.js"></script>
+</body>
+</html>

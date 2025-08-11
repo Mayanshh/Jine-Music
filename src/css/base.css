@@ -1,0 +1,31 @@
+
+:root {
+  --red-clr: #ff5ea9;
+  --pink-clr: #eb66ff;
+  --purple-clr: #b366ff;
+  --blue-clr: #666eff;
+  --white-clr: #ffffff;
+  --green-clr: #c6d959;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: #000000;
+}

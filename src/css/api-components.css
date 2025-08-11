@@ -1,0 +1,522 @@
+/* Loading states and API-specific styles */
+.search-results {
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+}
+
+.search-result-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.search-result-item img {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Loading spinner */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid var(--green-clr);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Content loading states */
+.content-loading .card,
+.content-loading .song-card {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.content-loading .card::after,
+.content-loading .song-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 100%);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Lyrics states */
+.lyrics-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.lyrics-loading .loading-spinner {
+  margin-bottom: 16px;
+}
+
+.lyrics-loading p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.no-lyrics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.no-lyrics i {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.no-lyrics p {
+  font-size: 16px;
+  margin: 0;
+  max-width: 280px;
+  line-height: 1.4;
+}
+
+/* Lyrics line states */
+.lyrics-line {
+  transition: all 0.3s ease;
+  margin: 8px 0;
+  padding: 4px 0;
+}
+
+.lyrics-line.upcoming {
+  opacity: 0.4;
+  transform: translateY(2px);
+}
+
+.lyrics-line.active {
+  opacity: 1;
+  transform: translateY(0);
+  color: var(--green-clr);
+  font-weight: 500;
+}
+
+.lyrics-line.past {
+  opacity: 0.6;
+  transform: translateY(-1px);
+}
+
+/* API error states */
+.api-error {
+  padding: 12px 16px;
+  background: rgba(255, 100, 100, 0.1);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  border-radius: 8px;
+  color: rgba(255, 100, 100, 0.9);
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* Enhanced card states for API data */
+.card[data-playlist-id],
+.card[data-search-query],
+.song-card[data-song-id] {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card[data-search-query]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Content loading states */
+.content-loading .card-wrapper {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.content-loading .songs-section {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--green-clr);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Category button active states */
+.sorting-section button.active {
+  background: var(--green-clr);
+  color: var(--black-clr);
+  font-weight: 600;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
+}
+
+.sorting-section button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.sorting-section button {
+  transition: all 0.3s ease;
+}
+
+.card[data-playlist-id]::before,
+.song-card[data-song-id]::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--green-clr), var(--pink-clr));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.card[data-playlist-id]:hover::before,
+.song-card[data-song-id]:hover::before {
+  opacity: 0.3;
+}
+
+/* Search overlay enhancements */
+.search-overlay {
+  backdrop-filter: blur(20px);
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Liked Songs Functionality */
+.liked-songs-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  margin-bottom: 20px;
+  padding: 20px;
+  animation: slideInUp 0.3s ease-out;
+}
+
+.liked-songs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.liked-songs-header h2 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.liked-songs-header h2 i {
+  color: #ff4757;
+  font-size: 1.1rem;
+}
+
+.close-liked-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-liked-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.liked-songs-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.liked-song-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s ease;
+}
+
+.liked-song-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.liked-song-item:last-child {
+  border-bottom: none;
+}
+
+.liked-song-info h3 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+}
+
+.liked-song-info p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0 0 4px 0;
+}
+
+.liked-song-info small {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+}
+
+.liked-song-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.remove-liked-btn {
+  background: none;
+  border: none;
+  color: #ff4757;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-liked-btn:hover {
+  background: rgba(255, 71, 87, 0.1);
+  transform: scale(1.1);
+}
+
+.liked-songs-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 15px;
+  margin: 20px;
+}
+
+.liked-songs-empty h3 {
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.liked-songs-empty p {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+.liked-song-card small {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 4px;
+}
+
+/* Like Button Styles */
+.like-btn {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.like-btn:hover {
+  transform: scale(1.1);
+}
+
+.like-btn.liked {
+  color: #ff4757 !important;
+  animation: heartPulse 0.3s ease;
+}
+
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Feedback Message */
+.like-feedback {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border-left: 4px solid #ff4757;
+  font-size: 0.9rem;
+  z-index: 10000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.like-feedback.show {
+  transform: translateX(0);
+}
+
+/* Song Actions Container */
+.song-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.song-actions .like-btn {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.song-actions .like-btn:hover {
+  color: #ff4757;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Liked Songs Button on Album Page */
+.liked-songs-btn {
+  background: linear-gradient(45deg, #ff4757, #ff6b7a);
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.liked-songs-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+
+.liked-songs-btn i {
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .api-error {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .loading-spinner {
+    width: 30px;
+    height: 30px;
+  }
+
+  .liked-songs-container {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .liked-song-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .liked-song-actions {
+    align-self: flex-end;
+  }
+
+  .like-feedback {
+    right: 10px;
+    left: 10px;
+    right: 10px;
+  }
+}
